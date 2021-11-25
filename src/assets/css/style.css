@@ -11,7 +11,7 @@ a.p, a.pa {
     margin-bottom:5px;
     position: relative;
   }
-  a.p:after {    
+  a.p:after, a.pa:after {    
     background: none repeat scroll 0 0 transparent;
     bottom: 0;
     content: "";
@@ -23,7 +23,7 @@ a.p, a.pa {
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
     width: 0;
   }
-  a.p:hover:after { 
+  a.p:hover:after, a.pa:hover:after { 
     width: 100%; 
     left: 0; 
   }
@@ -34,4 +34,13 @@ a.p, a.pa {
   #drawer{
     background: rgba(240, 240, 240, 1);
     
+  }@media screen and (max-width: 600px) {
+    .navv{
+      display: none;
+    }
+  }
+  @media screen and (max-width: 680px) {
+    a.p{
+      font-size:76%;
+    }
   }
