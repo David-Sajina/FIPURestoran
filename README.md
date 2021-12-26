@@ -3,6 +3,7 @@ FIPU Restoran, Web aplikacija za restoran gdje gosti mogu rezervirati stol, naru
 
 # Autori i zaduženja
 David Šajina (dsajina@unipu.hr) - implementacija modula za administraciju, pregled i uređivanje stolova i Firebase
+Krešimir Špehar (kspehar@unipu.hr) - implementacija modula za rezervaciju, naručivanje i meni
 
 
 # Prototip aplikacije
