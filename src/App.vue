@@ -17,7 +17,7 @@
            <router-link to="/rezerviraj">  <a href="" class="p" 
             >Rezerviraj</a></router-link>
             
-            <a class="pa">|</a>
+            <a class="pa" style="pointer-events: none; cursor: default;">|</a>
 
             <router-link to="/login"><a href="" class="p" 
             >Prijava</a></router-link>
