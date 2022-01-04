@@ -9,11 +9,16 @@
   
        
 	<div class="navv">
-          <router-link to="/about"><a href="" class="p" 
+          <router-link to="/meni"><a href="" class="p" 
             >Meni</a></router-link>
-         <a href="" class="p" >Naruči</a>
-           <router-link to="/rezerviraj"> <a href="" class="p" 
-            >Rezerviraj</a></router-link><a class="pa">|</a>
+
+        <router-link to="/meni"> <a href="" class="p" >Naruči</a></router-link>
+
+           <router-link to="/rezerviraj">  <a href="" class="p" 
+            >Rezerviraj</a></router-link>
+            
+            <a class="pa">|</a>
+
             <router-link to="/login"><a href="" class="p" 
             >Prijava</a></router-link>
         </div>
