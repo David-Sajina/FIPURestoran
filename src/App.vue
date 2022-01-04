@@ -4,18 +4,18 @@
        <v-app-bar-nav-icon @click="drawer = true" 
                            class="d-flex d-sm-none" 
                            ></v-app-bar-nav-icon>
-        <v-toolbar-title>FIPU RESTORAN</v-toolbar-title>
+        <v-toolbar-title> <router-link to="/">FIPU RESTORAN</router-link></v-toolbar-title>
         <v-spacer></v-spacer>
   
        
 	<div class="navv">
-        <a href="" class="p" 
-            >Meni</a>
+          <router-link to="/about"><a href="" class="p" 
+            >Meni</a></router-link>
          <a href="" class="p" >Naruči</a>
-            <a href="" class="p" 
-            >Rezerviraj</a><a class="pa">|</a>
-            <a href="" class="p" 
-            >Prijava</a>
+           <router-link to="/rezerviraj"> <a href="" class="p" 
+            >Rezerviraj</a></router-link><a class="pa">|</a>
+            <router-link to="/login"><a href="" class="p" 
+            >Prijava</a></router-link>
         </div>
     </v-app-bar>
     <!-- Add a navigation bar -->
@@ -37,29 +37,19 @@
 
       </v-list>
     </v-navigation-drawer>
-    <!-- Navigation bar ends -->
-    <v-content class="ma-5">
-       <v-tabs-items v-model="tab" class="d-flex flex-column align-center">
-        <v-tab-item
-          v-for="item in items"
-          :key="item"
-        >
-          You are on {{ item }}
-        </v-tab-item>
-      </v-tabs-items>
-    </v-content>
+  <v-main>
+      <router-view/>
+    </v-main>
   </v-app>
 </template>
+
 <script>
 export default {
-  el: '#app',
+  name: 'App',
   data () {
     return {
       drawer: false,
       tab: null,
-      items: [
-        'Meni', 'naruči', 'rezerviraj', 'prijava', 
-      ],
     }
   }
 }

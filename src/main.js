@@ -10,14 +10,3 @@ new Vue({
   vuetify,
   render: h => h(App)
 }).$mount('#app')
-var vApp = new Vue({
-  el: '#app',
-  vuetify: new Vuetify(),
-  data: {
-    drawer: false,
-    tab: null,
-      items: [
-        'web', 'shopping', 'videos', 'images', 'news',
-      ],
-  }
-})
