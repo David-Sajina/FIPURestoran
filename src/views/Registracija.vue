@@ -25,16 +25,21 @@
                     type="password"
                     v-model="password"
                   ></v-text-field>
+                  <v-text-field
+                    id="RepeatPassword"
+                    prepend-icon=""
+                    name="RepeatPassword"
+                    label="Ponovi lozinku"
+                    type="password"
+                    v-model="RepeatPassword"
+                  ></v-text-field>
                 </v-form>
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <router-link to="/registracija"
-                  ><v-btn text color="error"
-                    >Registriraj se
-                  </v-btn></router-link
+                <v-btn dark color="red" @click="registriraj"
+                  >Registriraj se</v-btn
                 >
-                <v-btn @click="login" dark color="red">Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -48,28 +53,26 @@
 import { firebase } from "@/firebase";
 
 export default {
-  name: "Login",
+  name: "Registracija",
   data() {
     return {
       username: "",
       password: "",
+      RepeatPassword: "",
     };
   },
   methods: {
-    login() {
-      console.log("login..." + this.username);
-
+    registriraj() {
       firebase
         .auth()
-        .signInWithEmailAndPassword(this.username, this.password)
-        .then((result) => {
-          console.log("Uspješna prijava", result);
-
-          this.$router.replace({ name: "About" });
+        .createUserWithEmailAndPassword(this.username, this.password)
+        .then(function () {
+          console.log("Uspješna registracija");
         })
-        .catch(function (e) {
-          console.error("Greška", e);
+        .catch(function (error) {
+          console.error("Došlo je do greške", error);
         });
+      console.log("Nastavak");
     },
   },
 };
