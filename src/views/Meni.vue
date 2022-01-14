@@ -14,6 +14,8 @@
 
           <v-card-actions>
             <v-btn color="red" text> Naruči </v-btn>
+            <v-spacer></v-spacer>
+            <v-btn v-if="store.currentUser" dark color="red">Obriši</v-btn>
           </v-card-actions>
         </v-card>
 
@@ -29,6 +31,8 @@
 
           <v-card-actions>
             <v-btn color="red" text> Naruči </v-btn>
+            <v-spacer></v-spacer>
+            <v-btn v-if="store.currentUser" dark color="red">Obriši</v-btn>
           </v-card-actions>
         </v-card>
 
@@ -44,6 +48,8 @@
 
           <v-card-actions>
             <v-btn color="red" text> Naruči </v-btn>
+            <v-spacer></v-spacer>
+            <v-btn v-if="store.currentUser" dark color="red">Obriši</v-btn>
           </v-card-actions>
         </v-card>
       </v-layout>
@@ -51,7 +57,38 @@
   </div>
 </template>
 <script>
+import { firebase } from "@/firebase";
+import store from "@/store.js";
+
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    // User is signed in.
+
+    store.currentUser = user.email;
+  } else {
+    // User is not signed in.
+
+    store.currentUser = null;
+  }
+});
 export default {
   name: "Meni",
+  data() {
+    return {
+      drawer: false,
+      tab: null,
+      store,
+    };
+  },
+  methods: {
+    logout() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.$router.push({ name: "Login" });
+        });
+    },
+  },
 };
 </script>
