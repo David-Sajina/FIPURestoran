@@ -11,13 +11,20 @@
       <v-spacer></v-spacer>
 
       <div class="navv">
+        <router-link to="/meni"> <a v-if="store.currentUser" href="" class="p">Narudžbe</a></router-link>
+        
+        <router-link to="/meni"> <a v-if="store.currentUser=='admin1@gmail.com'" href="" class="p">Osoblje</a></router-link>
         <router-link to="/meni"><a href="" class="p">Meni</a></router-link>
 
-        <router-link to="/meni"> <a href="" class="p">Naruči</a></router-link>
 
         <router-link to="/rezerviraj">
-          <a href="" class="p">Rezerviraj</a></router-link
+          <a v-if="store.currentUser=='admin1@gmail.com'" href="" class="p">Rezervacije</a></router-link
         >
+        
+        <router-link to="/rezerviraj">
+          <a v-if="!store.currentUser" href="" class="p">Rezerviraj</a></router-link
+        >
+
 
         <a class="pa" style="pointer-events: none; cursor: default">|</a>
 
