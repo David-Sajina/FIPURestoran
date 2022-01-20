@@ -15,7 +15,7 @@
           <v-card-actions>
             <v-btn color="red" text> Naruči </v-btn>
             <v-spacer></v-spacer>
-            <v-btn v-if="store.currentUser" dark color="red">Obriši</v-btn>
+            <v-btn v-if="store.currentUser=='admin1@gmail.com'" dark color="red">Obriši</v-btn>
           </v-card-actions>
         </v-card>
 
@@ -32,7 +32,7 @@
           <v-card-actions>
             <v-btn color="red" text> Naruči </v-btn>
             <v-spacer></v-spacer>
-            <v-btn v-if="store.currentUser" dark color="red">Obriši</v-btn>
+            <v-btn v-if="store.currentUser=='admin1@gmail.com'" dark color="red">Obriši</v-btn>
           </v-card-actions>
         </v-card>
 
@@ -49,7 +49,7 @@
           <v-card-actions>
             <v-btn color="red" text> Naruči </v-btn>
             <v-spacer></v-spacer>
-            <v-btn v-if="store.currentUser" dark color="red">Obriši</v-btn>
+            <v-btn v-if="store.currentUser=='admin1@gmail.com'" dark color="red">Obriši</v-btn>
           </v-card-actions>
         </v-card>
       </v-layout>
