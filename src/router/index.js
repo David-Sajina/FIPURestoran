@@ -28,6 +28,9 @@ const routes = [
 		name: "Login",
 		component: () =>
 			import(/* webpackChunkName: "about" */ "../views/Login.vue"),
+      meta: {
+        needsUser: false,
+      },
 	},
 	{
 		path: "/rezerviraj",
@@ -46,6 +49,34 @@ const routes = [
 		name: "Registracija",
 		component: () =>
 			import(/* webpackChunkName: "about" */ "../views/Registracija.vue"),
+	},
+  {
+		path: "/narudzbe",
+		name: "Narudzbe",
+		component: () =>
+			import(/* webpackChunkName: "about" */ "../views/Narudzbe.vue"),
+		meta: {
+			needsUser: true,
+		},
+	},
+  {
+		path: "/rezervacije",
+		name: "Rezervacije",
+		component: () =>
+			import(/* webpackChunkName: "about" */ "../views/Rezervacije.vue"),
+		meta: {
+			needsUser: true,
+		},
+	},
+  {
+		path: "/osoblje",
+		name: "Osoblje",
+		component: () =>
+			import(/* webpackChunkName: "about" */ "../views/Osoblje.vue"),
+		meta: {
+			needsUser: true,
+      needsAdmin: true,
+		},
 	},
 ];
 
