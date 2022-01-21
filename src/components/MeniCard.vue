@@ -4,13 +4,13 @@
       <v-layout row wrap>
         <v-card class="text-xs-center ma-3" max-width="344">
           <v-img
-            src="http://bhglas.dk/wp-content/uploads/2020/05/sarajevski-cevapi-PR.jpg"
+            :src="info.url"
             height="200px"
           ></v-img>
 
-          <v-card-title> Ćevapi </v-card-title>
+          <v-card-title> {{ info.title }} </v-card-title>
 
-          <v-card-subtitle> 651 kca  </v-card-subtitle>
+          <v-card-subtitle> {{ info.price }}  </v-card-subtitle>
 
           <v-card-actions>
             <v-btn color="red" text> Naruči </v-btn>
@@ -39,6 +39,7 @@ firebase.auth().onAuthStateChanged((user) => {
   }
 });
 export default {
+  props: ["info", "Title", "Price"],
   name: "MeniCard",
   data() {
     return {

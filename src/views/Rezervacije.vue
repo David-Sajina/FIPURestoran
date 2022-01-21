@@ -11,13 +11,22 @@ id="imageUrl"
  />
  </div>
  <div class="form-group">
- <label for="imageDescription">Description</label>
+ <label for="Title">Naslov</label>
  <input
- v-model="newImageDescription"
+ v-model="newTitle"
 type="text"
 class="form-control ml-2"
 placeholder="Enter the image description"
-id="imageDescription"
+id="Title"
+ /></div>
+ <div class="form-group">
+ <label for="Price">Cijena</label>
+ <input
+ v-model="newPrice"
+type="text"
+class="form-control ml-2"
+placeholder="Unesite cijenu"
+id="Price"
  />
  </div>
  <button type="submit" class="btn btn-primary ml-2">Post
@@ -26,7 +35,7 @@ image</button>
 </template>
 
 <script>
-import { firebase } from "@/firebase";
+import { db } from "@/firebase";
 import store from "@/store.js";
 import router from "@/router";
 
@@ -34,24 +43,28 @@ export default{
     name: 'rezervacije',
     data: function (){
         return{
-            newImageDescription: "",
+            newTitle: "",
             newImageUrl: "",
+            newPrice:"",
         }
     },
     methods: {
         postNewImage(){
             const imageUrl = this.newImageUrl;
-            const imageDescription = this.newImageDescription;
+            const title = this.newTitle;
+            const price = this.newPrice;
             
             db.collection("jelo").add({
                 url: imageUrl,
-                desc: imageDescription,
+                desc: title,
+                Cijena: price,
                 posted_at: Date.now(),
             })
             .then((doc)=>{
                 console.log("Spremljeno", doc)
-                this.newImageDescription = "";
+                this.newTitle = "";
                 this.newImageUrl = "";
+                this.newPrice = "";
             })
             .catch((e)=>{
                 console.error("greška")
