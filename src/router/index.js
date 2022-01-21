@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import store from "@/store";
 import Home from "../views/Home.vue";
 
 Vue.use(VueRouter);
@@ -9,6 +10,9 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+    meta: {
+      needsUser: true,
+    }
   },
   {
     path: "/about",
@@ -50,5 +54,8 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes,
 });
-
+router.beforeEach( (to, from, next) => {
+  console.log("stara ruta je", from.name, "nova ruta je ", to.name, store.currentUser),
+  next()
+});
 export default router;
