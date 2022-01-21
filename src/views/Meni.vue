@@ -10,7 +10,7 @@
 
           <v-card-title> Ćevapi </v-card-title>
 
-          <v-card-subtitle> 651 kcal </v-card-subtitle>
+          <v-card-subtitle> 651 kca  </v-card-subtitle>
 
           <v-card-actions>
             <v-btn color="red" text> Naruči </v-btn>
@@ -52,11 +52,14 @@
             <v-btn v-if="store.currentUser=='admin1@gmail.com'" dark color="red">Obriši</v-btn>
           </v-card-actions>
         </v-card>
+        <meni-card/>
       </v-layout>
     </v-container>
+    
   </div>
 </template>
 <script>
+import MeniCard from '@/components/MeniCard.vue'
 import { firebase } from "@/firebase";
 import store from "@/store.js";
 
@@ -73,6 +76,9 @@ firebase.auth().onAuthStateChanged((user) => {
 });
 export default {
   name: "Meni",
+  components: {
+    MeniCard,
+  },
   data() {
     return {
       drawer: false,
