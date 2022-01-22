@@ -50,7 +50,8 @@
     </v-app-bar>
     <!-- Add a navigation bar -->
     <v-navigation-drawer
-      style="background-color: grey"
+      style="background-color: red"
+      color="red lighten-1"
       v-model="drawer"
       absolute
       temporary
