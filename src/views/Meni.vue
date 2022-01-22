@@ -62,13 +62,21 @@
                                 id="Price"
                               />
                             </div>
-                            <button type="submit" class="btn btn-primary ml-2">
+                            <button
+                              type="submit"
+                              class="btn btn-primary ml-2"
+                              @click="obavijest()"
+                            >
                               Post image
                             </button>
                           </form>
                         </v-card-text>
                         <v-card-actions class="justify-end">
-                          <v-btn text @click="dialog.value = false"
+                          <v-btn
+                            text
+                            @click="dialog.value = false"
+                            value="Reload Page"
+                            onClick="document.location.reload(true)"
                             >Zatvori</v-btn
                           >
                         </v-card-actions>
@@ -171,6 +179,9 @@ export default {
         .then(() => {
           this.$router.push({ name: "Login" });
         });
+    },
+    obavijest() {
+      alert("Dodali ste jelo u meni!");
     },
   },
 };
