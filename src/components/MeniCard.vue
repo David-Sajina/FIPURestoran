@@ -3,24 +3,25 @@
     <v-container class="my-5">
       <v-layout row wrap>
         <v-card class="text-xs-center ma-3" max-width="344">
-          <v-img
-            :src="info.url"
-            height="200px"
-          ></v-img>
+          <v-img :src="info.url" height="200px"></v-img>
 
           <v-card-title> {{ info.title }} </v-card-title>
 
-          <v-card-subtitle> {{ info.price }}  </v-card-subtitle>
+          <v-card-subtitle> {{ info.price }} </v-card-subtitle>
 
           <v-card-actions>
-            <v-btn color="red" text> Naruči </v-btn>
+            <v-btn color="red lighten-1" text> Naruči </v-btn>
             <v-spacer></v-spacer>
-            <v-btn v-if="store.currentUser=='admin1@gmail.com'" dark color="red">Obriši</v-btn>
+            <v-btn
+              v-if="store.currentUser == 'admin1@gmail.com'"
+              dark
+              color="red lighten-1"
+              >Obriši</v-btn
+            >
           </v-card-actions>
         </v-card>
       </v-layout>
     </v-container>
-    
   </div>
 </template>
 <script>

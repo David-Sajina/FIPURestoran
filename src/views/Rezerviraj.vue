@@ -5,7 +5,7 @@
         <v-layout align-center justify-center>
           <v-flex>
             <v-card class="elevation-12">
-              <v-toolbar dark color="primary">
+              <v-toolbar dark color="red lighten-1">
                 <v-toolbar-title>Rezerviraj</v-toolbar-title>
               </v-toolbar>
               <v-card-text>
@@ -44,7 +44,7 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="primary" to="/">Rezerviraj</v-btn>
+                <v-btn dark color="red lighten-1" to="/">Rezerviraj</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>

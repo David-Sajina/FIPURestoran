@@ -13,7 +13,8 @@
                   <v-dialog>
                     <template v-slot:activator="{ on, attrs }">
                       <v-btn
-                        color="primary"
+                        dark
+                        color="red lighten-1"
                         height="315px"
                         width="324px"
                         v-bind="attrs"
@@ -23,8 +24,8 @@
                     </template>
                     <template v-slot:default="dialog">
                       <v-card>
-                        <v-toolbar color="primary" dark
-                          >Dodavanje novog jela</v-toolbar
+                        <v-toolbar dark color="red lighten-1"
+                          >DODAJ NOVO JELO</v-toolbar
                         >
                         <v-card-text>
                           <form
@@ -37,7 +38,7 @@
                                 v-model="newImageUrl"
                                 type="text"
                                 class="form-control ml-2"
-                                placeholder="Enter the image URL"
+                                placeholder="Unesite URL slike"
                                 id="imageUrl"
                               />
                             </div>
@@ -47,7 +48,7 @@
                                 v-model="newTitle"
                                 type="text"
                                 class="form-control ml-2"
-                                placeholder="Enter the image description"
+                                placeholder="Unesite ime jela"
                                 id="Title"
                               />
                             </div>
@@ -57,7 +58,7 @@
                                 v-model="newPrice"
                                 type="text"
                                 class="form-control ml-2"
-                                placeholder="Unesite cijenu"
+                                placeholder="Unesite cijenu jela"
                                 id="Price"
                               />
                             </div>

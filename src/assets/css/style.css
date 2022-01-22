@@ -30,7 +30,9 @@ a.pa:hover:after {
   width: 100%;
   left: 0;
 }
-
+img {
+  max-width: 150px;
+}
 a.current {
   color: #baada7;
 }
