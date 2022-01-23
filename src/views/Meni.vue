@@ -2,7 +2,7 @@
   <div class="meni">
     <v-container class="my-5">
       <v-layout row wrap>
-        <meni-card v-for="n in cards" :key="n" :info="n" />
+        <meni-card v-for="n in cards" :key="n.id" :info="n" />
         <!-- Card za dodat -->
 
         <div class="meni" v-if="store.currentUser">
