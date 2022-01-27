@@ -2,7 +2,7 @@
 	<div class="meni">
 		<v-container class="my-5">
 			<v-layout row wrap>
-				<meni-card v-for="n in cards" :key="n.id" :info="n" />
+				<meni-card @ondelete="getMeni" v-for="n in cards" :key="n.id" :info="n" />
 				<!-- Card za dodat -->
 
 				<div class="meni" v-if="store.currentUser">
@@ -135,6 +135,7 @@
 		},
 		methods: {
 			getMeni() {
+        console.log("getMeni")
 				db.collection("jelo")
 					.get()
 					.then((query) => {
