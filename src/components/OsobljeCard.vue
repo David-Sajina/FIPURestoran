@@ -2,13 +2,13 @@
 	<div>
 		<v-container style="margin-left:20px" height="200px" class="my-4">
 			<v-layout row wrap>
-				<v-card class="text-xs-center ma-4" height="260" max-width="344">
+				<v-card class="text-xs-center ma-4" height="260" width="260">
 					<v-card-text>
-						<p class="text-h4 text--primary">IME KONOBOAR</p>
+						<p class="text-h4 text--primary" style="text-align:center;">{{ info.ime }}  {{ info.prezime }}</p>
 						<p></p>
                         
 						<div class="text--primary" style="text-align:center;!important">
-							Konobar<br />
+							{{ info.pozicija }}<br />
 						</div>
 					</v-card-text>
 					<v-card-actions>
@@ -26,14 +26,14 @@
 							<v-card-text class="pb-0">
 								<p class="text-h5 text--primary">Dodatne informacije</p>
 								<p>
-									OIB:12319239139
+									OIB: {{ info.oib }}
 								</p><p>
-									Broj mobitela: 0999541053
+									Broj mobitela: {{ info.broj }}
 								</p><p>
-									Mjesto stanovanja: Rovinjska ul. 14
+									Mjesto stanovanja: {{ info.mjesto_stan }}
 								</p>
                                 <p>
-									Datum rođenja: 9.1.1995
+									Email: {{ info.email }}
 								</p>
 							</v-card-text>
 							<v-card-actions class="pt-0">
@@ -50,11 +50,16 @@
 </template>
 
 <script>
+import { firebase, db, storage } from "@/firebase";
+	import store from "@/store.js";
 	export default {
+        props: ["info", "ime", "prezime", "pozicija", "oib", "broj", "mjesto"],
 		name: "OsobljeCard",
-		data: () => ({
-			reveal: false,
-		}),
+		data: () => {
+            return{
+			reveal: false,}
+
+		},
 	};
 </script>
 <style>
