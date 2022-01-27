@@ -65,7 +65,7 @@
                             <button
                               type="submit"
                               class="btn btn-primary ml-2"
-                              @click="obavijest()"
+                              @click="dialog.value=false"
                             >
                               Post image
                             </button>
@@ -76,7 +76,6 @@
                             text
                             @click="dialog.value = false"
                             value="Reload Page"
-                            onClick="document.location.reload(true)"
                             >Zatvori</v-btn
                           >
                         </v-card-actions>
@@ -167,6 +166,7 @@ export default {
           this.newTitle = "";
           this.newImageUrl = "";
           this.newPrice = "";
+          this.getMeni();
         })
         .catch((e) => {
           console.error("greška");
