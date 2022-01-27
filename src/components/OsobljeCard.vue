@@ -33,7 +33,7 @@
 									Mjesto stanovanja: Rovinjska ul. 14
 								</p>
                                 <p>
-									Prva prijava u sustav: 10/7/2021
+									Datum rođenja: 9.1.1995
 								</p>
 							</v-card-text>
 							<v-card-actions class="pt-0">
