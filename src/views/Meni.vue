@@ -1,4 +1,6 @@
 <template>
+<div>
+    <div class="loadin" v-if="!load"><loadinga/></div>
 	<div class="meni">
 		<v-container class="my-5">
 			<v-layout row wrap>
@@ -41,9 +43,9 @@
 																v-model="imageReference"
 															></croppa>
 														</div>
+                            
 														<div class="form-group">
-															<label for="Title">Naslov</label>
-															<input
+															<v-text-field
 																v-model="newTitle"
 																type="text"
 																class="form-control ml-2"
@@ -52,8 +54,7 @@
 															/>
 														</div>
 														<div class="form-group">
-															<label for="Price">Cijena</label>
-															<input
+															<v-text-field
 																v-model="newPrice"
 																type="text"
 																class="form-control ml-2"
@@ -61,13 +62,13 @@
 																id="Price"
 															/>
 														</div>
-														<button
+														<v-btn block
 															type="submit"
 															class="btn btn-primary ml-2"
 															@click="dialog.value = false"
 														>
-															Post image
-														</button>
+															Objavi jelo
+														</v-btn>
 													</form>
 												</v-card-text>
 												<v-card-actions class="justify-end">
@@ -88,7 +89,7 @@
 				</div>
 			</v-layout>
 		</v-container>
-	</div>
+	</div></div>
 </template>
 <script>
 	import MeniCard from "@/components/MeniCard.vue";
@@ -96,6 +97,7 @@
 	import { db } from "@/firebase";
 	import store from "@/store.js";
 	import { storage } from "@/firebase";
+import Loadinga from '../components/Loadinga.vue';
 
 	/* 	let cards = [
 		"https://insanelygoodrecipes.com/wp-content/uploads/2020/10/Hamburger-with-Sesame-Seeds-Cheese-and-Veggies.png",
@@ -118,9 +120,11 @@
 		name: "Meni",
 		components: {
 			MeniCard,
+      Loadinga
 		},
 		data() {
 			return {
+        load:true,
 				newTitle: "",
 				newImageUrl: "",
 				newPrice: "",
@@ -134,7 +138,11 @@
 			this.getMeni();
 		},
 		methods: {
+      loadOn(){
+        let a=this.load;
+      this.load=!a;},
 			getMeni() {
+        this.loadOn();
         console.log("getMeni")
 				db.collection("jelo")
 					.get()
@@ -150,9 +158,12 @@
 								url: dok.url,
 							});
 						});
+            this.loadOn();
 					});
+        
 			},
 			postNewImage() {
+        this.loadOn();
 				this.imageReference.generateBlob((blobData) => {
 					console.log(blobData);
 
@@ -178,6 +189,7 @@
 										this.imageReference.remove();
 										this.newPrice = "";
 										this.getMeni();
+                    this.loadOn();
 									})
 									.catch((e) => {
 										console.error("greška");
