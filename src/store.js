@@ -7,6 +7,11 @@ export default new Vuex.Store( {
   currentUser: null,
   state: {
     cart:[]
+  },
+  mutations :{
+    addToCart(state, item){
+      state.cart.push(item);
+    }
   }
 
 })

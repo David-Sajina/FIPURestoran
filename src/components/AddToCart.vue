@@ -1,6 +1,6 @@
 <template>
     <div class="AddToCart">
-        <v-btn color="red lighten-1" text> Naruči </v-btn>
+        <v-btn @click="addToCart" color="red lighten-1" text> Naruči </v-btn>
     </div>
 </template>
 
@@ -14,10 +14,16 @@ export default {
     },
     data(){
         return{
+            item: {
             infoName: this.name,
             infoPrice: this.price,
-            info_id: this.infoId,
+            info_id: this.infoId
+            }
         }
-    }
+    },
+    methods:
+   { addToCart(){
+        this.$store.commit('addToCart', this.item)
+    }}
 }
 </script>

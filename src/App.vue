@@ -46,6 +46,54 @@
         <a href="#" v-if="store.currentUser" @click.prevent="logout" class="p"
           >Odjava</a
         >
+          <v-dialog
+        v-model="dialog"
+        width="500"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            color="red lighten-2"
+            dark
+            v-bind="attrs"
+            v-on="on"
+          >
+            Kart
+          </v-btn>
+         
+        
+        </template>
+  
+        <v-card>
+          <v-card-title class="text-h5 grey lighten-2">
+            Kart
+          </v-card-title>
+  
+          <v-card-text>
+          <ul><li v-for="item in this.$store.state.cart">
+            {{item.infoName}} {{item.infoPrice}}
+            </li></ul></v-card-text>
+  
+          <v-divider></v-divider>
+  
+          <v-card-actions>
+            <v-btn
+              color="green"
+              text
+            >
+              Idi na checkout
+            </v-btn>
+            <v-spacer></v-spacer>
+            <v-btn
+              color="primary"
+              text
+              @click="dialog = false"
+            >
+              Nastavi naručivati
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    
       </div>
     </v-app-bar>
     <!-- Add a navigation bar -->
@@ -95,6 +143,9 @@
       </v-list>
     </v-navigation-drawer>
     <v-main>
+       
+    
+    
       <router-view />
     </v-main>
   </v-app>
@@ -126,10 +177,13 @@ firebase.auth().onAuthStateChanged((user) => {
 
 export default {
   name: "App",
+  components:{
+  },
   data() {
     return {
       drawer: false,
       tab: null,
+      dialog:false,
       store,
     };
   },
