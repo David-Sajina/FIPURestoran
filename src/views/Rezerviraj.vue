@@ -29,12 +29,7 @@
                       label="Email"
                       type="text"
                     ></v-text-field>
-                    <v-text-field
-                      prepend-icon=""
-                      name="Email"
-                      label="Email"
-                      type="text"
-                    ></v-text-field>
+
                     <date-picker />
                     <v-select
                       :items="items"

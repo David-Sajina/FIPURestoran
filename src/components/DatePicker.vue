@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="mb-6">
-      Active picker: <code>{{ activePicker || "null" }}</code>
+      Odabrano: <code>{{ Odabrano || "null" }}</code>
     </div>
     <v-menu
       ref="menu"
@@ -14,7 +14,7 @@
       <template v-slot:activator="{ on, attrs }">
         <v-text-field
           v-model="date"
-          label="Birthday date"
+          label="Odaberi datum rezervacije"
           prepend-icon="mdi-calendar"
           readonly
           v-bind="attrs"
@@ -23,7 +23,7 @@
       </template>
       <v-date-picker
         v-model="date"
-        :active-picker.sync="activePicker"
+        :active-picker.sync="Odabrano"
         max="2024 - 01 - 01"
         min="2022-01-01"
         @change="save"
@@ -36,13 +36,13 @@
 export default {
   name: "DatePicker",
   data: () => ({
-    activePicker: null,
+    Odabrano: null,
     date: null,
     menu: false,
   }),
   watch: {
     menu(val) {
-      val && setTimeout(() => (this.activePicker = "YEAR"));
+      val && setTimeout(() => (this.Odabrano = "YEAR"));
     },
   },
   methods: {
