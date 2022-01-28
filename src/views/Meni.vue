@@ -163,8 +163,6 @@ import Loadinga from '../components/Loadinga.vue';
         
 			},
 			postNewImage() {
-				console.log(this.newPrice + 1000)
-				console.log(parseFloat(this.newPrice)+ 1000)
         this.loadOn();
 				this.imageReference.generateBlob((blobData) => {
 					console.log(blobData);

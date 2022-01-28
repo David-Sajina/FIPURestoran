@@ -6,7 +6,7 @@
         width="500"
       >
         <template v-slot:activator="{ on, attrs }">
-        <v-btn v-bind="attrs" v-on="on" @click="addToCart" color="red lighten-1" text> Naruči </v-btn>
+        <v-btn v-bind="attrs" v-on="on"  color="red lighten-1" text> Naruči </v-btn>
 
 
    
@@ -20,6 +20,34 @@
   
           <v-card-text>
            Unesite količinu
+           <v-row>
+           <v-btn
+        class="mx-2"
+        fab
+        dark
+        small
+        color="pink"
+        style="margin-top:20px;"        
+        @click="decrement"
+      >
+        <v-icon dark>
+          mdi-minus
+        </v-icon>
+      </v-btn><v-col cols="12" sm="3" md="3">
+           <v-text-field v-model="item.kolicina" type="number" label="Količina"></v-text-field></v-col>
+ <v-btn
+        class="mx-2"
+        fab
+        dark
+        small
+        color="pink"
+        style="margin-top:20px;"
+        @click="increment"
+      >
+        <v-icon dark>
+          mdi-plus
+        </v-icon>
+      </v-btn></v-row>
           </v-card-text>
   
           <v-divider></v-divider>
@@ -29,9 +57,9 @@
             <v-btn
               color="primary"
               text
-              @click="dialog = false"
+              @click="addToCart"
             >
-              I accept
+              Dodaj u košaricu
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -46,29 +74,39 @@
     
 export default {
     name: "AddToCart",
+    
     props: {
         name: String,
         price: Number,
         infoId: String,
+        kol: Number,
     },
     data(){
         return{
+            
+            dialog: false,
             item: {
             infoName: this.name,
             infoPrice: this.price,
             info_id: this.infoId,
-            },
-            dialog: false,
+            kolicina: 1
+            }
         }
     },
-    methods:
-   { addToCart(){
+    methods:{
+       increment(){
+           if(this.item.kolicina>0 && this.item.kolicina<20)
+{this.item.kolicina = parseFloat(this.item.kolicina,10) + 1}
+       },
+       decrement(){
+           if(this.item.kolicina>1){
+           this.item.kolicina = parseFloat(this.item.kolicina,10) -1}
+       },
+       addToCart(){
+           this.dialog = false;
+           console.log(this.item.kolicina + 10)
         this.$store.commit('addToCart', this.item)
     }}
 }
 
 </script>
-<style>
-
-
-</style>

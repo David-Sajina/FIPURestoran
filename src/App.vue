@@ -71,8 +71,8 @@
           <v-card-text>            
             <v-list-item v-for="item in this.$store.state.cart" :key="item.id">
         <v-list-item-content>
-          <v-list-item-title>{{item.infoName}} {{item.infoPrice}} kn
-            
+          <v-list-item-title>{{item.infoName}} {{item.infoPrice}} kn, količina {{item.kolicina}}
+
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
