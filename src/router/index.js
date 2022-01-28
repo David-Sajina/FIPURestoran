@@ -73,8 +73,7 @@ const routes = [
 		component: () =>
 			import(/* webpackChunkName: "about" */ "../views/Osoblje.vue"),
 		meta: {
-			needsUser: true,
-      needsAdmin: true,
+		needsUser: true,
 		},
 	},
 ];
