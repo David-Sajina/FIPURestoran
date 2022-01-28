@@ -68,10 +68,15 @@
             Kart
           </v-card-title>
   
-          <v-card-text>
-          <ul><li v-for="item in this.$store.state.cart" :key="item.id">
-            {{item.infoName}} {{item.infoPrice}}
-            </li></ul></v-card-text>
+          <v-card-text>            
+            <v-list-item v-for="item in this.$store.state.cart" :key="item.id">
+        <v-list-item-content>
+          <v-list-item-title>{{item.infoName}} {{item.infoPrice}} kn
+            
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+            </v-card-text>
   
           <v-divider></v-divider>
   
@@ -187,7 +192,7 @@ export default {
       store,
     };
   },
-  methods: {
+  methods:{ 
     logout() {
       firebase
         .auth()

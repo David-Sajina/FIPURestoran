@@ -56,7 +56,7 @@
 														<div class="form-group">
 															<v-text-field
 																v-model="newPrice"
-																type="text"
+																type="number"
 																class="form-control ml-2"
 																placeholder="Unesite cijenu jela"
 																id="Price"
@@ -127,7 +127,7 @@ import Loadinga from '../components/Loadinga.vue';
         load:true,
 				newTitle: "",
 				newImageUrl: "",
-				newPrice: "",
+				newPrice: Number,
 				cards: [],
 				drawer: false,
 				store,
@@ -163,6 +163,8 @@ import Loadinga from '../components/Loadinga.vue';
         
 			},
 			postNewImage() {
+				console.log(this.newPrice + 1000)
+				console.log(parseFloat(this.newPrice)+ 1000)
         this.loadOn();
 				this.imageReference.generateBlob((blobData) => {
 					console.log(blobData);
@@ -174,8 +176,7 @@ import Loadinga from '../components/Loadinga.vue';
 						.then((result) => {
 							result.ref.getDownloadURL().then((url) => {
 								const title = this.newTitle;
-								const price = this.newPrice;
-
+								const price  = parseFloat(this.newPrice)
 								db.collection("jelo")
 									.add({
 										url: url,

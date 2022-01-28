@@ -11,6 +11,7 @@ export default new Vuex.Store( {
   mutations :{
     addToCart(state, item){
       state.cart.push(item);
+      console.log("dodano u košaricu: ", item)
     }
   }
 

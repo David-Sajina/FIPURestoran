@@ -7,7 +7,7 @@
 
 					<v-card-title> {{ info.title }} </v-card-title>
 
-					<v-card-subtitle> {{ info.price }} </v-card-subtitle>
+					<v-card-subtitle> {{ info.price }} kn </v-card-subtitle>
 
 					<v-card-actions>
 						<add-to-cart :name="info.title" :price="info.price" :info-id="info.id"/>
@@ -54,6 +54,7 @@
 				drawer: false,
 				tab: null,
 				store,
+				dialog:false,
 			};
 		},
 
