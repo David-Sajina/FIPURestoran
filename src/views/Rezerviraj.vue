@@ -35,6 +35,7 @@
                       label="Email"
                       type="text"
                     ></v-text-field>
+                    <date-picker />
                     <v-select
                       :items="items"
                       label="Prigoda (Opcionalno)"
@@ -54,8 +55,13 @@
   </v-app>
 </template>
 <script>
+import DatePicker from "@/components/DatePicker.vue";
+
 export default {
   name: "Rezerviraj",
+  components: {
+    DatePicker,
+  },
 
   data: () => ({
     items: ["Rođendan", "Godišnjica", "Proslava", "Poslovni obrok"],
