@@ -10,7 +10,7 @@
 					<v-card-subtitle> {{ info.price }} </v-card-subtitle>
 
 					<v-card-actions>
-						<v-btn color="red lighten-1" text> Naruči </v-btn>
+						<add-to-cart :name="info.title" :price="info.price" :info-id="info.id"/>
 						<v-spacer></v-spacer>
 						<v-btn
 							v-if="store.currentUser == 'admin1@gmail.com'"
@@ -26,8 +26,11 @@
 	</div>
 </template>
 <script>
+	
+	import AddToCart from "@/components/AddToCart.vue";
 	import { firebase, db, storage } from "@/firebase";
 	import store from "@/store.js";
+
 
 	firebase.auth().onAuthStateChanged((user) => {
 		if (user) {
@@ -43,6 +46,9 @@
 	export default {
 		props: ["info", "Title", "Price"],
 		name: "MeniCard",
+		components: {
+			AddToCart,
+		},
 		data() {
 			return {
 				drawer: false,
