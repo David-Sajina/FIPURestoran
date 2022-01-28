@@ -69,7 +69,7 @@
           </v-card-title>
   
           <v-card-text>
-          <ul><li v-for="item in this.$store.state.cart">
+          <ul><li v-for="item in this.$store.state.cart" :key="item.id">
             {{item.infoName}} {{item.infoPrice}}
             </li></ul></v-card-text>
   
