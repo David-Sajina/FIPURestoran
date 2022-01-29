@@ -10,7 +10,7 @@
 					<v-card-subtitle> {{ info.price }} kn </v-card-subtitle>
 
 					<v-card-actions>
-						<add-to-cart :name="info.title" :price="info.price" :info-id="info.id"/>
+						<add-to-cart @onCommit="emmitt" :name="info.title" :price="info.price" :info-id="info.id"/>
 						<v-spacer></v-spacer>
 						<v-btn
 							v-if="store.currentUser == 'admin1@gmail.com'"
@@ -59,6 +59,9 @@
 		},
 
 		methods: {
+			emmitt(){
+				this.$emit('onCommit')
+			},
 			deleteMeni(docc, urlp) {
         const self = this;
 				if (confirm("Jeste li sigurni da želite izbrisati jelo?")) {

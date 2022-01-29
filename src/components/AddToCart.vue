@@ -104,8 +104,9 @@ export default {
        },
        addToCart(){
            this.dialog = false;
-           console.log(this.item.kolicina + 10)
-        this.$store.commit('addToCart', this.item)
+           console.log(this.item.kolicina + 10);
+        this.$store.commit('addToCart', this.item);
+              this.$emit('onCommit')
     }}
 }
 

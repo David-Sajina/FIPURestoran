@@ -51,7 +51,7 @@
         width="500"
       >
         <template v-slot:activator="{ on, attrs }">
-          <v-btn
+          <v-btn id="btnnn"
             color="red lighten-2"
             dark
             v-bind="attrs"
@@ -63,7 +63,7 @@
         
         </template>
   
-        <v-card>
+        <v-card  >
           <v-card-title class="text-h5 grey lighten-2">
             Kart
           </v-card-title>
@@ -151,7 +151,7 @@
        
     
     
-      <router-view />
+      <router-view @onCommit="getTest" />
     </v-main>
   </v-app>
 </template>
@@ -186,6 +186,8 @@ export default {
   },
   data() {
     return {
+      test:{tf:false
+      },
       drawer: false,
       tab: null,
       dialog:false,
@@ -193,6 +195,10 @@ export default {
     };
   },
   methods:{ 
+    getTest(){
+      console.log("Emitano")
+      document.getElementById("btnnn").click();
+    },
     logout() {
       firebase
         .auth()
