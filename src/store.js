@@ -21,6 +21,12 @@ export default new Vuex.Store( {
       console.log("dodano u košaricu: ", item)}
       item.kolicina = 1;
     }
+  },
+  removeFromCart: (state, item) => {
+    console.log("remove")
+    let index = state.cart.indexOf(item);
+
+    item.splice(index,1);
   },  
 
 })
