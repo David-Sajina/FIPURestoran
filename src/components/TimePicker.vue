@@ -20,9 +20,12 @@
             readonly
             v-bind="attrs"
             v-on="on"
+            color="red lighten-1"
           ></v-text-field>
         </template>
         <v-time-picker
+          format="24hr"
+          color="red lighten-1"
           v-if="menu2"
           v-model="time"
           full-width

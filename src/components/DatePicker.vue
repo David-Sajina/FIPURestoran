@@ -14,6 +14,7 @@
     >
       <template v-slot:activator="{ on, attrs }">
         <v-text-field
+          color="red lighten-1"
           v-model="date"
           label="Odaberi datum rezervacije"
           prepend-icon="mdi-calendar"
@@ -23,6 +24,7 @@
         ></v-text-field>
       </template>
       <v-date-picker
+        color="red lighten-1"
         v-model="date"
         :active-picker.sync="Odabrano"
         max="2024 - 01 - 01"
