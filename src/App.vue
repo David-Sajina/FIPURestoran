@@ -1,10 +1,11 @@
 <template>
   <v-app app>
     <v-app-bar app style="background-color: red" color="red lighten-1">
+      <div class="dra">
       <v-app-bar-nav-icon
         @click="drawer = true"
-        class="d-flex d-sm-none"
-      ></v-app-bar-nav-icon>
+        class="d-flex "
+      ></v-app-bar-nav-icon></div>
       <v-toolbar-title>
         <router-link to="/"><img src="@/assets/fipures.png" /></router-link
       ></v-toolbar-title>
@@ -107,11 +108,12 @@
     <!-- Add a navigation bar -->
     
     <v-navigation-drawer
-      style="background-color: red"
+      style="background-color: red;"
       color="red lighten-1"
       v-model="drawer"
       absolute
       temporary
+      
     >
       <v-list nav dense>
         <router-link to="/narudzbe"
@@ -195,6 +197,7 @@ export default {
       tab: null,
       dialog:false,
       store,
+      
     };
   },
   methods:{ 

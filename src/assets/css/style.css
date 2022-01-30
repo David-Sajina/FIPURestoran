@@ -39,16 +39,37 @@ a.current {
 #drawer {
   background: rgba(240, 240, 240, 1);
 }
-@media screen and (max-width: 600px) {
-  .navv {
-    display: none;
+.dra{display:none}
+@media screen and (max-width: 898px) {
+  a.p {
+    font-size: 90%;
   }
 }
+@media screen and (max-width: 854px) {
+  a.p {
+    font-size: 80%;
+  }
+}
+@media screen and (max-width: 810px) {
+  a.p {
+    font-size: 70%;
+  }
+}
+@media screen and (max-width: 770px) {
+  .navv{display:none}
+}
+@media screen and (max-width: 770px) {
+  .dra {
+    display: block;
+  }
+}
+
 @media screen and (max-width: 700px) {
   a.p {
     font-size: 76%;
   }
 }
+
 @media screen and (max-width: 630px) {
   a.p {
     font-size: 72%;

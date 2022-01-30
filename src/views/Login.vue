@@ -69,6 +69,7 @@ export default {
         })
         .catch(function (e) {
           console.error("Greška", e);
+          alert("Email ili lozinka nije točna!")
         });
     },
   },
