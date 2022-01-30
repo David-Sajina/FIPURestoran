@@ -46,7 +46,10 @@
         <a href="#" v-if="store.currentUser" @click.prevent="logout" class="p"
           >Odjava</a
         >
-          <v-dialog
+         
+    
+      </div>
+       <v-dialog
         v-model="dialog"
         width="500"
       >
@@ -100,10 +103,6 @@
           </v-card-actions>
         </v-card>
       </v-dialog>
-    
-      </div>
-      
-        <v-btn @click="getTest">Cart</v-btn>
     </v-app-bar>
     <!-- Add a navigation bar -->
     
