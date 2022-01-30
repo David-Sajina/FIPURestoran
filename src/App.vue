@@ -56,6 +56,7 @@
             dark
             v-bind="attrs"
             v-on="on"
+            @click="getTotal"
           >
             Kart
           </v-btn>
@@ -77,7 +78,8 @@
         </v-list-item-content>
       </v-list-item>
             </v-card-text>
-  
+          <v-list-item-title style="margin-left:15px;">Total: {{ test.tf }} kn
+          </v-list-item-title>
           <v-divider></v-divider>
   
           <v-card-actions>
@@ -100,8 +102,11 @@
       </v-dialog>
     
       </div>
+      
+        <v-btn @click="getTest">Cart</v-btn>
     </v-app-bar>
     <!-- Add a navigation bar -->
+    
     <v-navigation-drawer
       style="background-color: red"
       color="red lighten-1"
@@ -143,8 +148,7 @@
           ></router-link
         ><v-spacer></v-spacer>
         <a href="#" v-if="store.currentUser" @click.prevent="logout" class="pa"
-          >Odjava</a
-        >
+          >Odjava</a>
       </v-list>
     </v-navigation-drawer>
     <v-main>
@@ -186,7 +190,7 @@ export default {
   },
   data() {
     return {
-      test:{tf:false
+      test:{tf: 0,
       },
       drawer: false,
       tab: null,
@@ -195,6 +199,14 @@ export default {
     };
   },
   methods:{ 
+    getTotal(){
+      this.test.tf = 0 ;
+      for (let index = 0; index < this.$store.state.cart.length; index++) {
+     this.test.tf =  this.test.tf + this.$store.state.cart[index].kolicina * this.$store.state.cart[index].infoPrice;
+      }
+      console.log(this.test.tf)
+     
+    },
     getTest(){
       console.log("Emitano")
       document.getElementById("btnnn").click();
