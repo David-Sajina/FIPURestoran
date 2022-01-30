@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="mb-6">
+    <div class="mb-2">
       Odabrano: <code>{{ Odabrano || "null" }}</code>
     </div>
     <v-menu
@@ -9,7 +9,8 @@
       :close-on-content-click="false"
       transition="scale-transition"
       offset-y
-      min-width="auto"
+      max-width="290px"
+      min-width="290px"
     >
       <template v-slot:activator="{ on, attrs }">
         <v-text-field

@@ -31,6 +31,7 @@
                     ></v-text-field>
 
                     <date-picker />
+                    <time-picker />
                     <v-select
                       :items="items"
                       label="Prigoda (Opcionalno)"
@@ -51,11 +52,13 @@
 </template>
 <script>
 import DatePicker from "@/components/DatePicker.vue";
+import TimePicker from "@/components/TimePicker.vue";
 
 export default {
   name: "Rezerviraj",
   components: {
     DatePicker,
+    TimePicker,
   },
 
   data: () => ({
