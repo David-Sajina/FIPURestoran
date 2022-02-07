@@ -74,7 +74,7 @@
 									{{ item.kolicina
 									}}
                   <v-btn
-                    @click="removeFromCart"
+                    @click="removeFromCart(item)"
 										class="ma-2"
 										text
 										icon
@@ -207,11 +207,10 @@
 				console.log(this.test.tf);
 			},
 			getTest() {
-				console.log("Emitano");
 				document.getElementById("btnnn").click();
 			},
-      removeFromCart(){
-        console.log(this.item)
+      removeFromCart(p){
+		  console.log(p)
       },
 			logout() {
 				firebase
