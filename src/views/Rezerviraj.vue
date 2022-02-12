@@ -9,39 +9,47 @@
                 <v-toolbar-title>Rezerviraj</v-toolbar-title>
               </v-toolbar>
               <v-card-text>
-                <v-form>
+                <form
+                  @submit.prevent="dodajRezervaciju"
+                  class="form-inline mb-5"
+                >
                   <v-container>
                     <v-text-field
+                      v-model="newImePrezime"
                       prepend-icon=""
                       name="Ime"
                       label="Ime i prezime"
                       type="text"
                     ></v-text-field>
                     <v-text-field
+                      v-model="newBroj"
                       prepend-icon=""
                       name="Broj"
                       label="Broj mobitela"
                       type="Number"
                     ></v-text-field>
                     <v-text-field
+                      v-model="newEmail"
                       prepend-icon=""
                       name="Email"
                       label="Email"
                       type="text"
                     ></v-text-field>
 
-                    <date-picker />
-                    <time-picker />
-                    <v-select
-                      :items="items"
-                      label="Prigoda (Opcionalno)"
-                    ></v-select>
+                    <date-picker> v-model="newDatum" </date-picker>
+                    <time-picker> v-model="newVrijeme" </time-picker>
                   </v-container>
-                </v-form>
+                </form>
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn dark color="red lighten-1" to="/">Rezerviraj</v-btn>
+                <v-btn
+                  type="submit"
+                  @click="dodajRezervaciju()"
+                  dark
+                  color="red lighten-1"
+                  >Rezerviraj
+                </v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -53,17 +61,49 @@
 <script>
 import DatePicker from "@/components/DatePicker.vue";
 import TimePicker from "@/components/TimePicker.vue";
+import { db } from "@/firebase";
 
 export default {
   name: "Rezerviraj",
+  data() {
+    return {
+      newImePrezime: "",
+      newBroj: "",
+      newEmail: "",
+      newDatum: "",
+      newVrijeme: "",
+    };
+  },
+  methods: {
+    dodajRezervaciju() {
+      const ImePrezime = this.newImePrezime;
+      const Broj = this.newBroj;
+      const Email = this.newEmail;
+      const Datum = this.newDatum;
+      const Vrijeme = this.newVrijeme;
+
+      db.collection("rezervacije")
+        .add({
+          ime: ImePrezime,
+          broj: Broj,
+          email: Email,
+          datum: Datum,
+          vrijeme: Vrijeme,
+          posted_at: Date.now(),
+        })
+        .then((doc) => {
+          console.log("Spremljeno", doc);
+          this.$router.replace({ name: "meni" });
+        })
+        .catch((e) => {
+          console.error(e);
+        });
+    },
+  },
   components: {
     DatePicker,
     TimePicker,
   },
-
-  data: () => ({
-    items: ["Rođendan", "Godišnjica", "Proslava", "Poslovni obrok"],
-  }),
 };
 </script>
 
