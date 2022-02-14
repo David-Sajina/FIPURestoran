@@ -36,8 +36,76 @@
                       type="text"
                     ></v-text-field>
 
-                    <date-picker> v-model="newDatum" </date-picker>
-                    <time-picker> v-model="newVrijeme" </time-picker>
+                    <div>
+                      <div class="mb-2">
+                        Odabrano: <code>{{ Odabrano || "null" }}</code>
+                      </div>
+                      <v-menu
+                        ref="menu"
+                        v-model="menu"
+                        :close-on-content-click="false"
+                        transition="scale-transition"
+                        offset-y
+                        max-width="290px"
+                        min-width="290px"
+                      >
+                        <template v-slot:activator="{ on, attrs }">
+                          <v-text-field
+                            color="red lighten-1"
+                            v-model="newDatum"
+                            label="Odaberi datum rezervacije"
+                            prepend-icon="mdi-calendar"
+                            readonly
+                            v-bind="attrs"
+                            v-on="on"
+                          ></v-text-field>
+                        </template>
+                        <v-date-picker
+                          color="red lighten-1"
+                          v-model="newDatum"
+                          :active-picker.sync="Odabrano"
+                          max="2024 - 01 - 01"
+                          min="2022-01-01"
+                          @change="save"
+                        ></v-date-picker>
+                      </v-menu>
+                    </div>
+                    <v-row>
+                      <v-col cols="11" sm="5">
+                        <v-menu
+                          ref="menu"
+                          v-model="menu2"
+                          :close-on-content-click="false"
+                          :nudge-right="40"
+                          :return-value.sync="newVrijeme"
+                          transition="scale-transition"
+                          offset-y
+                          max-width="290px"
+                          min-width="290px"
+                        >
+                          <template v-slot:activator="{ on, attrs }">
+                            <v-text-field
+                              v-model="newVrijeme"
+                              label="Odaberi vrijeme rezervacije"
+                              prepend-icon="mdi-clock-time-four-outline"
+                              readonly
+                              v-bind="attrs"
+                              v-on="on"
+                              color="red lighten-1"
+                            ></v-text-field>
+                          </template>
+                          <v-time-picker
+                            format="24hr"
+                            color="red lighten-1"
+                            v-if="menu2"
+                            v-model="newVrijeme"
+                            full-width
+                            @click:minute="$refs.menu.save(newVrijeme)"
+                          ></v-time-picker>
+                        </v-menu>
+                      </v-col>
+                      <v-spacer></v-spacer>
+                    </v-row>
                   </v-container>
                 </form>
               </v-card-text>
@@ -59,14 +127,15 @@
   </v-app>
 </template>
 <script>
-import DatePicker from "@/components/DatePicker.vue";
-import TimePicker from "@/components/TimePicker.vue";
 import { db } from "@/firebase";
 
 export default {
   name: "Rezerviraj",
   data() {
     return {
+      Odabrano: null,
+      menu: false,
+      menu2: false,
       newImePrezime: "",
       newBroj: "",
       newEmail: "",
@@ -74,7 +143,15 @@ export default {
       newVrijeme: "",
     };
   },
+  watch: {
+    menu(val) {
+      val && setTimeout(() => (this.Odabrano = "YEAR"));
+    },
+  },
   methods: {
+    save(date) {
+      this.$refs.menu.save(date);
+    },
     dodajRezervaciju() {
       const ImePrezime = this.newImePrezime;
       const Broj = this.newBroj;
@@ -99,10 +176,6 @@ export default {
           console.error(e);
         });
     },
-  },
-  components: {
-    DatePicker,
-    TimePicker,
   },
 };
 </script>
