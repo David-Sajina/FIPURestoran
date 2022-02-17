@@ -170,6 +170,7 @@ export default {
         })
         .then((doc) => {
           console.log("Spremljeno", doc);
+          alert("Rezervacija uspješna!");
           this.$router.replace({ name: "meni" });
         })
         .catch((e) => {

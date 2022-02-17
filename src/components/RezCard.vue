@@ -12,7 +12,9 @@
 
             <div class="text--primary">EMAIL: {{ info.email }}</div>
 
-            <v-btn color="red lighten-1" dark> Poništi </v-btn>
+            <v-btn color="red lighten-1" @click="deleteRez(info.id)" dark>
+              Poništi
+            </v-btn>
           </v-card-text>
         </v-card>
       </v-layout>
@@ -21,10 +23,29 @@
 </template>
 
 <script>
+import { db } from "@/firebase";
+
 export default {
   props: ["info", "ime", "datum", "vrijeme", "broj", "email"],
 
   name: "RezCard",
+
+  methods: {
+    deleteRez(doc) {
+      if (confirm("Jeste li sigurni da želite obrisati rezervaciju?")) {
+        db.collection("rezervacije")
+          .doc(doc)
+          .delete()
+          .then(function () {
+            console.log("Rezervacija izbrisana");
+            window.location.reload();
+          })
+          .catch(function (error) {
+            console.error("Eror:", error);
+          });
+      }
+    },
+  },
 };
 </script>
 
