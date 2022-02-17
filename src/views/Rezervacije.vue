@@ -1,6 +1,8 @@
 <template>
   <div>
-    <RezCard class="rez" v-for="n in cards" :key="n.id" :info="n" />
+    <v-layout row wrap style>
+      <RezCard class="rez" v-for="n in cards" :key="n.id" :info="n" />
+    </v-layout>
   </div>
 </template>
 
@@ -25,15 +27,12 @@ export default {
   },
   methods: {
     getPosts() {
-      console.log("firebase dohvat...");
-
       db.collection("rezervacije")
         .get()
         .then((query) => {
           this.cards = [];
           query.forEach((doc) => {
             const data = doc.data();
-            console.log(data);
 
             this.cards.push({
               id: doc.id,
@@ -43,7 +42,6 @@ export default {
               datum: data.datum,
               vrijeme: data.vrijeme,
             });
-            console.log(this.cards);
           });
         });
     },
