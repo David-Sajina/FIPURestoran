@@ -20,7 +20,8 @@
               depressed
               v-bind="attrs"
               v-on="on"
-              color="primary"
+              dark
+              color="red lighten-1"
               type="submit"
               id="btndisclaimer"
             >
@@ -40,6 +41,7 @@
                         label="Ime*"
                         required
                         v-model="newIme"
+                        color="red lighten-1"
                       ></v-text-field>
                     </v-col>
 
@@ -48,6 +50,7 @@
                         label="Prezime*"
                         required
                         v-model="newPrezime"
+                        color="red lighten-1"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="11">
@@ -55,6 +58,7 @@
                         label="Email*"
                         required
                         v-model="newEmail"
+                        color="red lighten-1"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="11">
@@ -63,6 +67,7 @@
                         type="password"
                         required
                         v-model="newPassword"
+                        color="red lighten-1"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="6">
@@ -70,6 +75,7 @@
                         label="OIB*"
                         required
                         v-model="newOIB"
+                        color="red lighten-1"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="5">
@@ -77,6 +83,7 @@
                         label="Broj mobitela*"
                         required
                         v-model="newBroj"
+                        color="red lighten-1"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="6">
@@ -84,6 +91,7 @@
                         label="Mjesto stanovanja*"
                         required
                         v-model="newMjesto"
+                        color="red lighten-1"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="5">
@@ -97,6 +105,7 @@
                         label="Pozicija*"
                         required
                         v-model="newRole"
+                        color="red lighten-1"
                       ></v-select>
                     </v-col>
                   </v-row>
@@ -104,12 +113,12 @@
                 <small>*polje je potrebno ispuniti</small>
               </v-card-text>
               <v-spacer></v-spacer>
-              <v-btn color="blue darken-1" text @click="dialog = false">
+              <v-btn color="red lighten-1" text @click="dialog = false">
                 Zatvori
               </v-btn>
               <v-btn
                 type="submit"
-                color="blue darken-1"
+                color="red lighten-1"
                 text
                 @click="dialog = false"
               >

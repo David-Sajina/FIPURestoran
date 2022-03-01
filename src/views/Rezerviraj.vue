@@ -3,7 +3,7 @@
     <v-main>
       <v-container fluid fill-height>
         <v-layout align-center justify-center>
-          <v-flex>
+          <v-flex xs12 sm8 md6>
             <v-card class="elevation-12">
               <v-toolbar dark color="red lighten-1">
                 <v-toolbar-title>Rezerviraj</v-toolbar-title>
@@ -20,6 +20,7 @@
                       name="Ime"
                       label="Ime i prezime"
                       type="text"
+                      color="red lighten-1"
                     ></v-text-field>
                     <v-text-field
                       v-model="newBroj"
@@ -27,6 +28,7 @@
                       name="Broj"
                       label="Broj mobitela"
                       type="Number"
+                      color="red lighten-1"
                     ></v-text-field>
                     <v-text-field
                       v-model="newEmail"
@@ -34,6 +36,7 @@
                       name="Email"
                       label="Email"
                       type="text"
+                      color="red lighten-1"
                     ></v-text-field>
 
                     <div>

@@ -16,6 +16,7 @@
                     label="Email"
                     type="email"
                     v-model="username"
+                    color="red lighten-1"
                   ></v-text-field>
                   <v-text-field
                     id="password"
@@ -24,6 +25,7 @@
                     label="Lozinka"
                     type="password"
                     v-model="password"
+                    color="red lighten-1"
                   ></v-text-field>
                 </v-form>
               </v-card-text>
@@ -69,7 +71,7 @@ export default {
         })
         .catch(function (e) {
           console.error("Greška", e);
-          alert("Email ili lozinka nije točna!")
+          alert("Email ili lozinka nije točna!");
         });
     },
   },
