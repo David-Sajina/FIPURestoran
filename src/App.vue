@@ -94,7 +94,7 @@
 					<v-divider></v-divider>
 
 					<v-card-actions>
-						<v-btn color="green" text> Idi na checkout </v-btn>
+						<router-link to="/checkout"><v-btn color="green" text @click="dialog = false">CHECKOUT</v-btn></router-link>
 						<v-spacer></v-spacer>
 						<v-btn color="primary" text @click="dialog = false">
 							Nastavi naručivati
