@@ -175,6 +175,7 @@ export default {
             });
           });
           this.loadOn();
+          console.log("Meni: ", this.cards)
         });
     },
     postNewImage() {

@@ -1,44 +1,23 @@
 <template><div>
-    
-
-					<v-card-text>
-						<v-list-item v-for="item in this.$store.state.cart" :key="item.id">
-							<v-list-item-content>
-								<v-list-item-title
-									>{{ item.infoName }} {{ item.infoPrice }} kn, količina
-									{{ item.kolicina
-									}}<v-btn
-                    @click="removeFromCart()"
-										class="ma-2"
-										text
-										icon
-										relative
-										right
-										color="red lighten-2"
-									>
-										<v-icon>mdi-minus</v-icon>
-									</v-btn>
-                  
-								</v-list-item-title>
-							</v-list-item-content>
-						</v-list-item>
-					</v-card-text>
-					<v-list-item-title style="margin-left: 15px"
-						>Total: {{ test.tf }} kn
-					</v-list-item-title>
-                    
+    <div>
+<Stavka
+            v-for="item in te" :key="item.id" :item="item" 
+          />
 </div>
-
+</div>
 					
 </template>
 
 <script>
 
 	import store from "@/store.js";
+    import Stavka from "@/components/Stavka.vue";
 export default {
 		name: "Checkout",
     
-		components: {},
+		components: {
+            Stavka,
+        },
 		data() {
      
 			return {
@@ -53,6 +32,7 @@ export default {
   },
 		methods: {
 			getTotal() {
+                console.log("cart",this.te)
                 console.log(this.test)
 				for (let index = 0; index < this.te.length; index++) {
 					this.test.tf =
