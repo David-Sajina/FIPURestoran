@@ -8,7 +8,7 @@
 				></v-app-bar-nav-icon>
 			</div>
 			<v-toolbar-title>
-				<router-link to="/"><img src="@/assets/fipuresT.png" height="50px" /></router-link
+				<router-link to="/"><img src="@/assets/fipures.png" height="45px" style="margin-top:7px;" /></router-link
 			></v-toolbar-title>
 			<v-spacer></v-spacer> 
 
