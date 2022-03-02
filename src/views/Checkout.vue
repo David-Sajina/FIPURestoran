@@ -25,21 +25,23 @@
 					
 					       
         
-          <v-select
+        <v-select v-model="test.stol"
             :items="items"
             label="Odaberite stol"
-			style="width:40%;margin-left:30px;"
+			style="width:30%;margin-left:30px;margin-top:20px;"
           ></v-select>
 			<div class="my-2">
-              <v-btn
-                x-large
+				
+              <v-btn v-if="test.stol!=''"
+			  @click="orderCommit()"
+                m-large
                 color="success"
                 dark
 				style="float:right;	margin-right:50px;margin-top:10px;margin-bottom:10px;"
               >
                 Potvrdi narudžbu
               </v-btn>
-			  <v-card style="float:right;	margin-right:50px;margin-top:20px;"><h3>Ukupno: {{ test.tf }} kn</h3></v-card> 
+			  <v-card style="float:right;	margin-right:50px;margin-top:20px;margin-bottom:15px;"><h3>Ukupno: {{ test.tf }} kn</h3></v-card> 
             </div>
 				</v-card></v-app
 			>
@@ -48,7 +50,8 @@
 </template>
 
 <script>
-	import store from "@/store.js";
+import { db } from "@/firebase";
+import store from "@/store.js";
 	import Stavka from "@/components/Stavka.vue";
 	export default {
 		name: "Checkout",
@@ -60,7 +63,7 @@
 			
 			return {
 				 items: ['Stol 1', 'Stol 2', 'Stol 3', 'Stol 4', 'Stol 5'],
-				test: { tf: 0 },
+				test: { tf: 0, stol: "" },
 				te: this.$store.state.cart,
 				store,
 			};
@@ -84,6 +87,26 @@
 				this.test.tf = 0;
 				this.getTotal();
 			},
+			orderCommit(){
+				console.log("orderCommit", this.te, this.test.stol, this.test.tf)
+				db.collection("narudzba")
+                  .add({
+                    stavke: this.te,
+                    stol: this.test.stol,
+                    ukupno: this.test.tf,
+                    posted_at: Date.now(),
+                  })
+                  .then((doc) => {
+                    console.log("Spremljeno", doc);
+                  })
+			}
+
+			
 		},
+		/* addOrder(te){
+			for (let index = 0; index < this.te.length; index++) {
+				OrderCommit(te.infoName)
+				}
+		} */ 
 	};
 </script>
