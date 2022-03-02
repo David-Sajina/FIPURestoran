@@ -8,7 +8,7 @@
 									>{{ item.infoName }} {{ item.infoPrice }} kn, količina
 									{{ item.kolicina
 									}}<v-btn
-                    @click="removeFromCart()"
+                    @click="removeFromCart(item)"
 										class="ma-2"
 										text
 										icon
@@ -63,12 +63,11 @@ export default {
 							this.te[index].infoPrice;
 				}
 			}, */
-      removeFromCart(){
-           console.log(this.te.kolicina);
-        this.$store.commit('removeFromCart', this.te);
-        console.log(this.te)
+      removeFromCart(item){
+           console.log(this.item.kolicina);
+        this.$store.commit('removeFromCart', this.item);
+        console.log(this.item)
         this.test.tf = 0;
-        this.getTotal()
     }
 			
 		},
