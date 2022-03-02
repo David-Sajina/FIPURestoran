@@ -1,7 +1,7 @@
-<template><div>
+<template>
     
 
-					<v-card-text>
+					<!-- <v-card-text>
 						
 							<v-list-item-content>
 								<v-list-item-title
@@ -21,12 +21,24 @@
                   
 								</v-list-item-title>
 							</v-list-item-content>
-					</v-card-text><!-- 
-					<v-list-item-title style="margin-left: 15px"
-						>Total: {{ test.tf }} kn
-					</v-list-item-title> -->
-                    
-</div>
+					</v-card-text> -->
+<tr>
+            <td>{{ item.infoName }}</td>
+            <td>{{ item.infoPrice }} kn</td>
+            <td>{{ item.kolicina }}</td>
+			<td><v-btn
+                    @click="removeFromCart(item)"
+										class="ma-2"
+										text
+										icon
+										relative
+										right
+										color="red lighten-2"
+									>
+										<v-icon>mdi-minus</v-icon>
+									</v-btn></td>
+      </tr>
+     
 
 					
 </template>
@@ -38,12 +50,14 @@ export default {
 		name: "Stavka",
         props: {
 			item: Object,
+			t: Object
 		},
     
 		components: {},
 		data() {
      
 			return {
+				 
 				test: { tf: 0 },
                 te: this.$store.state.cart,
 				store,

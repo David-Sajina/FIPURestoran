@@ -1,8 +1,35 @@
 <template><div>
-    <div>
+    <!-- <div>
 <Stavka
             v-for="item in te" :key="item.id" :item="item" 
           />
+</div> -->
+<div id="app">
+  <v-app id="inspire">
+    <v-simple-table>
+        <thead>
+          <tr>
+            <th class="text-left">
+              Jelo
+            </th>
+            <th class="text-left">
+              Cijena
+            </th>
+			<th class="text-left">
+              Količina
+            </th>
+			<th class="text-left">
+              Ukloni
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <Stavka
+            v-for="item in te" :key="item.id" :item="item" 
+          />
+        </tbody>
+    </v-simple-table>
+  </v-app>
 </div>
 </div>
 					
