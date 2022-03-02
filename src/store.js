@@ -22,13 +22,11 @@ export default new Vuex.Store( {
       item.kolicina = 1;
     },
   removeFromCart: (state, item) => {
-    console.log("remove")
-    console.log("item je ", item)
+    console.log("store-item je ", item)
     let index = state.cart.indexOf(item,1);
     if(index == -1){
       index = 0;
     }
-    console.log("index:", index)
     state.cart.splice(index,1);  
   },  
   }

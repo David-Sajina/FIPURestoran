@@ -80,8 +80,9 @@ export default {
       removeFromCart(item){
            console.log(this.item.kolicina);
         this.$store.commit('removeFromCart', this.item);
-        console.log(this.item)
-        this.test.tf = 0;
+        console.log(this.te)
+		this.$emit('remov')
+		
     }
 			
 		},
