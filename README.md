@@ -2,8 +2,10 @@
 FIPU Restoran, Web aplikacija za restoran gdje gosti mogu rezervirati stol, naručiti jelo i piće, prije dolaska ili po dolasku u restoran. Osoblje ima uvid u narudžbe te ih može uređivati.
 
 # Autori i zaduženja
-David Šajina (dsajina@unipu.hr) - implementacija modula za administraciju, pregled i uređivanje stolova i Firebase
-Krešimir Špehar (kspehar@unipu.hr) - implementacija modula za rezervaciju, naručivanje i meni
+
+David Šajina (dsajina@unipu.hr) - implementacija modula za administraciju, meni( pregled menija, dodavanje i brisanje jela menija, naručivanje, košarica, checkout i pregled narudžbi)
+
+Krešimir Špehar (kspehar@unipu.hr) - izrada prototipa, use case diagrama, implementacija modula za rezervaciju, pregled rezervacija, prijava djelatnika, početna stranica
 
 
 # Prototip aplikacije
@@ -18,6 +20,7 @@ Sveučilište Jurja Dobrile u Puli
 Fakultet informatike u Puli
 Programsko inženjerstvo, ak.god. 2021./2022.
 Mentor: Nikola Tanković (https://fipu.unipu.hr/fipu/nikola.tankovic, nikola.tankovic@unipu.hr)
+
 
 
 ## Project setup
