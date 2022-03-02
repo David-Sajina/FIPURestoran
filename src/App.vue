@@ -8,9 +8,9 @@
 				></v-app-bar-nav-icon>
 			</div>
 			<v-toolbar-title>
-				<router-link to="/"><img src="@/assets/fipures.png" /></router-link
+				<router-link to="/"><img src="@/assets/fipuresT.png" height="50px" /></router-link
 			></v-toolbar-title>
-			<v-spacer></v-spacer>
+			<v-spacer></v-spacer> 
 
 			<div class="navv">
 				<router-link to="/narudzbe">

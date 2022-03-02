@@ -29,6 +29,7 @@
           />
         </tbody>
     </v-simple-table>
+	<hr style="margin-top:10px;;height:3.5px; background:black;">TOTAL: {{test.tf}}
   </v-app>
 </div>
 </div>
