@@ -1,11 +1,11 @@
 <template >
-	<div>
+	<div><div v-if="this.test.tf == 0"><h2 style="margin-left:20px;">Nemate ništa u košarici</h2></div>
 		<!-- <div>
 <Stavka
             v-for="item in te" :key="item.id" :item="item" 
           />
 </div> -->
-		<div id="app" style="max-width: 1000px; margin: auto; padding: 10px">
+		<div v-if="this.test.tf != 0" id="app" style="max-width: 1000px; margin: auto; padding: 10px">
 			<v-app id="inspire">
 				<v-card>
 					<v-simple-table>
@@ -74,6 +74,12 @@ import store from "@/store.js";
 			this.getTotal();
 		},
 		methods: {
+			deleteCart(){
+			for (let index = this.te.length -1; index >=0; index--) {
+					 this.$store.commit('removeFromCart', this.te[index]);
+					 this.getTotal()	
+					 this.test.stol=''	}
+		},
 			getTotal() {
 				
 				console.log(this.test);
@@ -94,12 +100,14 @@ import store from "@/store.js";
                     posted_at: Date.now(),
                   })
                   .then((doc) => {
-                    console.log("Spremljeno", doc);
+                    console.log("Spremljeno", doc)
+					this.deleteCart();
                   })
 			}
 
 			
 		},
+		
 		/* addOrder(te){
 			for (let index = 0; index < this.te.length; index++) {
 				OrderCommit(te.infoName)
