@@ -31,11 +31,7 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <router-link to="/registracija"
-                  ><v-btn text color="red lighten-1"
-                    >Registriraj se
-                  </v-btn></router-link
-                >
+
                 <v-btn @click="login" dark color="red lighten-1">Login</v-btn>
               </v-card-actions>
             </v-card>
