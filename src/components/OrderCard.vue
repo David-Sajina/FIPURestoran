@@ -19,7 +19,7 @@
 					      <v-col cols="auto">
         <v-dialog
           transition="dialog-bottom-transition"
-          max-width="600"
+          max-width="10000"
         >
           <template v-slot:activator="{ on, attrs }">
             <v-btn
@@ -35,7 +35,32 @@
                 dark
               >{{ info.stol}}</v-toolbar>
               <v-card-text>
-                <div class="text-h2 pa-12"> INFOMRACIJE</div>
+                <div class="text-h2 pa-12"> Informacije o narudzbi
+                
+                <v-card>
+					<v-simple-table>
+						<thead>
+							<tr>
+								<th class="text-left">Jelo</th>
+								<th class="text-left">Cijena</th>
+								<th class="text-left">Količina</th>
+							</tr>
+						</thead>
+						<tbody v-for="item in info.stavke" :key="item.infoName" :item="item">
+							   <tr>
+            <td>{{ item.infoName }}</td>
+            <td>{{ item.infoPrice }} kn</td>
+            <td>{{ item.kolicina }}</td>
+			
+                            
+        </tr>
+						</tbody>TOTAL: {{info.ukupno}}
+                        
+					</v-simple-table>
+                </v-card>
+                
+                
+                </div>
               </v-card-text>
               <v-card-actions class="justify-end">
                 <v-btn
@@ -59,6 +84,8 @@ import moment from 'moment'
 	export default {
 		props: ["info"],
 		name: "OrderCard",
+        components:{
+        },
         computed:{
             postedFromHour(){
                /* return moment(this.info.posted_at).fromNow(); */
