@@ -5,7 +5,10 @@
 				<v-card class="text-xs-center ma-4" height="260" width="260">
 					<v-card-text>
 						<p class="text-h4 text--primary" style="text-align: center">
-							{{ info.posted_at }} 
+							{{ postedFromDate }} 
+						</p>
+                        <p class="text-h5 text--primary" style="text-align: center">
+							{{ postedFromHour }} 
 						</p>
 						<p></p>
 
@@ -23,16 +26,16 @@
               color="primary"
               v-bind="attrs"
               v-on="on"
-            >From the bottom</v-btn>
+            >Prikaži više</v-btn>
           </template>
           <template v-slot:default="dialog">
             <v-card>
               <v-toolbar
                 color="primary"
                 dark
-              >Opening from the bottom</v-toolbar>
+              >{{ info.stol}}</v-toolbar>
               <v-card-text>
-                <div class="text-h2 pa-12">Hello world!</div>
+                <div class="text-h2 pa-12"> INFOMRACIJE</div>
               </v-card-text>
               <v-card-actions class="justify-end">
                 <v-btn
@@ -52,9 +55,20 @@
 </template>
 
 <script>
+import moment from 'moment'
 	export default {
 		props: ["info"],
 		name: "OrderCard",
+        computed:{
+            postedFromHour(){
+               /* return moment(this.info.posted_at).fromNow(); */
+               return moment(this.info.posted_at).format('hh:mm:ss');
+            },
+            postedFromDate(){
+                
+               return moment(this.info.posted_at).format('DD/MM/YYYY');
+            }
+        },
 		data: () => {
 			return {
 				reveal: false,
