@@ -89,7 +89,7 @@ import moment from 'moment'
         computed:{
             postedFromHour(){
                /* return moment(this.info.posted_at).fromNow(); */
-               return moment(this.info.posted_at).format('hh:mm:ss');
+               return moment(this.info.posted_at).format('HH:mm:ss');
             },
             postedFromDate(){
                 

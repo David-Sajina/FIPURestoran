@@ -16,7 +16,7 @@
 							v-if="store.currentUser == 'admin1@gmail.com'"
 							dark
 							color="red lighten-1"
-							@click="deleteMeni(info.id, info.url)"
+							@click="deleteMeni(info.id, info.url, info.Drinks, info)"
 							>Obriši</v-btn
 						>
 					</v-card-actions>
@@ -62,12 +62,17 @@
 			emmitt(){
 				this.$emit('onCommit')
 			},
-			deleteMeni(docc, urlp) {
+			deleteMeni(docc, urlp, drink, info) {
         const self = this;
-				if (confirm("Jeste li sigurni da želite izbrisati jelo?")) {
+				if (confirm("Jeste li sigurni da želite izbrisati?")) {
 					console.log(docc);
 					console.log(urlp);
-					db.collection("jelo")
+					console.log("drink", drink)
+					console.log(info,"info")
+					let ime="jelo"
+					if(drink==true){ime="pice"}
+					console.log("ime", ime)
+					db.collection(ime)
 						.doc(docc)
 						.delete()
 						.then(function () {
