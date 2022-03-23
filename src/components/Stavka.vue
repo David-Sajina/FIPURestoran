@@ -24,7 +24,7 @@
 					</v-card-text> -->
 <tr>
             <td>{{ item.infoName }}</td>
-            <td>{{ item.infoPrice }} kn</td>
+            <td>{{ item.infoPrice }}kn</td>
             <td>{{ item.kolicina }}</td>
 			<td><v-btn
                     @click="removeFromCart(item)"

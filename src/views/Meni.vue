@@ -26,7 +26,7 @@
         <v-layout row wrap>
           <meni-card
             @onCommit="test"
-            @ondelete="getMeni, getDrinks"
+            @ondelete="pozovi"
             v-for="n in cards"
             :key="n.id"
             :info="n"
@@ -321,7 +321,6 @@ export default {
     },
     getDrinks(){
       this.loadOn();
-      console.log("getDrinks");
       db.collection("pice")
         .get()
         .then((query) => {
