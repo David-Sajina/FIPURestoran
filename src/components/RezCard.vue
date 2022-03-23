@@ -38,12 +38,12 @@ export default {
           .delete()
           .then(function () {
             console.log("Rezervacija izbrisana");
-            window.location.reload();
           })
           .catch(function (error) {
             console.error("Eror:", error);
           });
       }
+      this.$emit("refresh");
     },
   },
 };

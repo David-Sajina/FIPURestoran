@@ -132,11 +132,7 @@
         ><v-spacer></v-spacer>
         <router-link to="/meni"><a href="" class="pa">Meni</a></router-link
         ><v-spacer></v-spacer>
-        <router-link to="/naruci"
-          ><a v-if="!store.currentUser" href="" class="pa"
-            >Naruči</a
-          ></router-link
-        ><v-spacer></v-spacer>
+
         <router-link to="/rezervacije"
           ><a v-if="store.currentUser" href="" class="pa"
             >Rezervacije</a

@@ -1,7 +1,13 @@
 <template>
   <div>
     <v-layout row wrap style>
-      <RezCard class="rez" v-for="n in cards" :key="n.id" :info="n" />
+      <RezCard
+        @refresh="getPosts"
+        class="rez"
+        v-for="n in cards"
+        :key="n.id"
+        :info="n"
+      />
     </v-layout>
   </div>
 </template>
