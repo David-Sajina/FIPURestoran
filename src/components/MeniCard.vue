@@ -1,8 +1,8 @@
 <template>
-	<div class="meni">
-		<v-container class="my-5">
-			<v-layout row wrap>
-				<v-card class="text-xs-center ma-3" max-width="344">
+		<div class="meni">
+			<v-container class="my-5">
+			<v-layout>
+				<v-card class="text-xs-center ma-3" max-width="334">
 					<v-img :src="info.url" height="200px"></v-img>
 
 					<v-card-title> {{ info.title }} </v-card-title>
