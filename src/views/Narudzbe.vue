@@ -2,7 +2,7 @@
 	<div>
 		<div class="loadin" v-if="!load"><loadinga /></div>
 		<v-layout row wrap style>
-			<order-card v-for="n in cards" :key="n.id" :info="n" /><!-- 
+			<order-card @ref="getOrder" v-for="n in cards" :key="n.id" :info="n" /><!-- 
 			<meni-card @ondelete="getMeni" v-for="n in cards" :key="n.id" :info="n" /> -->
 		</v-layout>
 	</div>

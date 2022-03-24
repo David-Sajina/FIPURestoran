@@ -26,7 +26,13 @@
               color="primary"
               v-bind="attrs"
               v-on="on"
-            >Prikaži više</v-btn>
+            >Više</v-btn>
+      <v-btn style="margin-left:40px;"
+        depressed @click="arhiviraj"
+        color="green"
+      >
+        Arhiviraj   
+      </v-btn>
           </template>
           <template v-slot:default="dialog">
             <v-card>
@@ -59,12 +65,20 @@
 					</v-simple-table>
                 </v-card>
                 
+          <v-btn
+        depressed
+        color="error"
+        @click="izbrisi"
+      >
+        Izbriši narudžbu
+      </v-btn>
                 
                 </div>
               </v-card-text>
               <v-card-actions class="justify-end">
                 <v-btn
                   text
+                  id="zatvori"
                   @click="dialog.value = false"
                 >Close</v-btn>
               </v-card-actions>
@@ -80,7 +94,8 @@
 </template>
 
 <script>
-import moment from 'moment'
+import moment from 'moment';
+import { db } from "@/firebase";
 	export default {
 		props: ["info"],
 		name: "OrderCard",
@@ -103,8 +118,54 @@ import moment from 'moment'
 			};
 		},
 		methods: {
-			
-		},
+			arhiviraj(){
+        console.log(this.info)
+        
+          console.log("stavke", this.info.stavke)
+          console.log("stol", this.info.stol)
+          console.log("ukupno", this.info.ukupno)
+          console.log("postedat", this.info.posted_at)
+         if (confirm("Jeste li sigurni da želite arhivirati narudzbu?")) {
+        db.collection("narudzba")
+          .doc(this.info.id)
+          .delete()
+          .then(function () {
+            console.log("narudzba izbrisana");
+          })
+          .catch(function (error) {
+            console.error("Eror:", error);
+          });
+        db.collection("arhorder")
+                  .add({
+                    stavke: this.info.stavke,
+                    stol: this.info.stol,
+                    ukupno: this.info.ukupno,
+                    posted_at: this.info.posted_at,
+                  })
+                  .then(() => {
+                    console.log("Spremljeno u arhorder", this.info)
+                  })
+
+
+      }
+      /* this.$emit("refresh"); */
+
+      },
+      izbrisi(){
+         if (confirm("Jeste li sigurni da želite izbrisati narudzbu?")) {
+        db.collection("narudzba")
+          .doc(this.info.id)
+          .delete()
+          .then(function () {
+            console.log("narudzba izbrisana");
+          })
+          .catch(function (error) {
+            console.error("Eror:", error);
+          }); 
+      }
+      document.getElementById("zatvori").click();
+      this.$emit('ref')
+      }},
 	};
 </script>
 <style>
