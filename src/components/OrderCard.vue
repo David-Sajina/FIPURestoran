@@ -4,6 +4,9 @@
 			<v-layout row wrap>
 				<v-card class="text-xs-center ma-4" height="260" width="260">
 					<v-card-text>
+            <p class="text-h8 text--primary" style="text-align: center">
+							Br. narudzbe: {{ info.posted_at }} 
+						</p>
 						<p class="text-h4 text--primary" style="text-align: center">
 							{{ postedFromDate }} 
 						</p>
@@ -27,11 +30,17 @@
               v-bind="attrs"
               v-on="on"
             >Više</v-btn>
-      <v-btn style="margin-left:40px;"
+      <v-btn v-if="!info.arh" style="margin-left:40px;"
         depressed @click="arhiviraj"
         color="green"
       >
         Arhiviraj   
+      </v-btn>
+      <v-btn v-if="info.arh" style="margin-left:40px;"
+        depressed @click="obnovi"
+        color="green"
+      >
+        Obnovi   
       </v-btn>
           </template>
           <template v-slot:default="dialog">
@@ -65,20 +74,27 @@
 					</v-simple-table>
                 </v-card>
                 
-          <v-btn
+          <v-btn v-if="!info.arh"
         depressed
         color="error"
         @click="izbrisi"
       >
         Izbriši narudžbu
       </v-btn>
+      <v-btn v-if="info.arh"
+        depressed
+        color="error"
+        @click="izbrisiArh"
+      >
+        Izbriši arh narudžbu
+      </v-btn>
                 
                 </div>
               </v-card-text>
               <v-card-actions class="justify-end">
-                <v-btn
-                  text
+                <v-btn 
                   id="zatvori"
+                  text
                   @click="dialog.value = false"
                 >Close</v-btn>
               </v-card-actions>
@@ -141,6 +157,7 @@ import { db } from "@/firebase";
                     stol: this.info.stol,
                     ukupno: this.info.ukupno,
                     posted_at: this.info.posted_at,
+                    arh: true
                   })
                   .then(() => {
                     console.log("Spremljeno u arhorder", this.info)
@@ -165,7 +182,27 @@ import { db } from "@/firebase";
       }
       document.getElementById("zatvori").click();
       this.$emit('ref')
-      }},
+      },
+      izbrisiArh(){
+         if (confirm("Jeste li sigurni da želite izbrisati narudzbu?")) {
+        db.collection("arhorder")
+          .doc(this.info.id)
+          .delete()
+          .then(function () {
+            console.log("narudzba izbrisana");
+          })
+          .catch(function (error) {
+            console.error("Eror:", error);
+          }); 
+      }
+      document.getElementById("zatvori").click();
+      this.$emit('ref')
+      },
+      obnovi(){
+
+      }
+      },
+      
 	};
 </script>
 <style>

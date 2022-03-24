@@ -1,10 +1,30 @@
 <template>
 	<div>
 		<div class="loadin" v-if="!load"><loadinga /></div>
-		<v-layout row wrap style>
-			<order-card @ref="getOrder" v-for="n in cards" :key="n.id" :info="n" /><!-- 
-			<meni-card @ondelete="getMeni" v-for="n in cards" :key="n.id" :info="n" /> -->
-		</v-layout>
+		<v-tabs background-color="transparent" color="basil" grow>
+			<v-tab> Narudzbe </v-tab>
+			<v-tab> Arhivirano </v-tab>
+			<v-tab-item>
+				<v-layout row wrap style>
+					<order-card
+						@ref="getRef"
+						v-for="n in cards"
+						:key="n.id"
+						:info="n"
+					/>
+				</v-layout>
+			</v-tab-item>
+			<v-tab-item>
+				<v-layout row wrap style>
+					<order-card
+						@ref="getRef"
+						v-for="n in cardsa"
+						:key="n.id"
+						:info="n"
+					/>
+				</v-layout>
+			</v-tab-item>
+		</v-tabs>
 	</div>
 </template>
 <script>
@@ -37,10 +57,12 @@
 				store,
 				load: true,
 				cards: [],
+				cardsa: [],
 			};
 		},
 		mounted() {
 			this.getOrder();
+			this.getArh();
 		},
 		methods: {
 			loadOn() {
@@ -51,19 +73,42 @@
 				this.loadOn();
 				console.log("getorder");
 				db.collection("narudzba")
+					.orderBy("posted_at", "desc")
 					.get()
 					.then((query) => {
 						this.cards = [];
 						query.forEach((doc) => {
 							const dok = doc.data();
 							dok.id = doc.id;
-                            this.cards.push(dok);
+							this.cards.push(dok);
 						});
 
 						console.log("final dok", this.cards);
 					});
 				this.loadOn();
 			},
+			getArh() {
+				this.loadOn();
+				console.log("getarh");
+				db.collection("arhorder")
+					.orderBy("posted_at", "desc")
+					.get()
+					.then((query) => {
+						this.cardsa = [];
+						query.forEach((doc) => {
+							const dok = doc.data();
+							dok.id = doc.id;
+							this.cardsa.push(dok);
+						});
+
+						console.log("final dok", this.cardsa);
+					});
+				this.loadOn();
+			},
+			getRef(){
+				this.getArh();
+				this.getOrder();
+			}
 		},
 	};
 </script>
