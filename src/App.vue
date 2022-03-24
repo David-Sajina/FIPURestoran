@@ -97,8 +97,8 @@
           <v-divider></v-divider>
 
           <v-card-actions>
-            <router-link to="/checkout"
-              ><v-btn color="green" text @click="dialog = false"
+            <router-link style="text-decoration: none;" to="/checkout"
+              ><v-btn depressed color="green" text @click="dialog = false"
                 >CHECKOUT</v-btn
               ></router-link
             >

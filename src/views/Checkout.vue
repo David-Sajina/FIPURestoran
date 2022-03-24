@@ -102,6 +102,7 @@ import store from "@/store.js";
                   .then((doc) => {
                     console.log("Spremljeno", doc)
 					this.deleteCart();
+					this.$router.replace({ name: "Home" });
                   })
 			}
 
