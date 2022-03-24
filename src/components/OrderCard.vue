@@ -135,12 +135,6 @@ import { db } from "@/firebase";
 		},
 		methods: {
 			arhiviraj(){
-        console.log(this.info)
-        
-          console.log("stavke", this.info.stavke)
-          console.log("stol", this.info.stol)
-          console.log("ukupno", this.info.ukupno)
-          console.log("postedat", this.info.posted_at)
          if (confirm("Jeste li sigurni da želite arhivirati narudzbu?")) {
         db.collection("narudzba")
           .doc(this.info.id)
@@ -165,7 +159,7 @@ import { db } from "@/firebase";
 
 
       }
-      /* this.$emit("refresh"); */
+       this.$emit("ref");
 
       },
       izbrisi(){
@@ -199,7 +193,30 @@ import { db } from "@/firebase";
       this.$emit('ref')
       },
       obnovi(){
+         if (confirm("Jeste li sigurni da želite vratiti narudzbu?")) {
+        db.collection("arhorder")
+          .doc(this.info.id)
+          .delete()
+          .then(function () {
+            console.log("narudzba arc izbrisana");
+          })
+          .catch(function (error) {
+            console.error("Eror:", error);
+          });
+        db.collection("narudzba")
+                  .add({
+                    stavke: this.info.stavke,
+                    stol: this.info.stol,
+                    ukupno: this.info.ukupno,
+                    posted_at: this.info.posted_at,
+                  })
+                  .then(() => {
+                    console.log("Spremljeno u narudzbu", this.info)
+                  })
 
+
+      }
+       this.$emit("ref");
       }
       },
       
