@@ -10,12 +10,12 @@ Krešimir Špehar (kspehar@unipu.hr) - izrada prototipa, use case diagrama, clas
 
 # Prototip aplikacije
 
-[Link](https://www.figma.com/proto/I6D9pcRlle1naOxM0LybSu/FIPU-Restoran?page-id=0%3A1&node-id=38%3A39&scaling=min-zoom&starting-point-node-id=38%3A39&show-proto-sidebar=1)
+[Link na prototip](https://www.figma.com/proto/I6D9pcRlle1naOxM0LybSu/FIPU-Restoran?page-id=0%3A1&node-id=38%3A39&scaling=min-zoom&starting-point-node-id=38%3A39&show-proto-sidebar=1)
 
-Javni link na aplikaciju
+# Javni link na aplikaciju
 Web: [FIPU Restoran](https://fipurestoran.netlify.app/)
 
-Organizacija
+# Organizacija
 Sveučilište Jurja Dobrile u Puli
 Fakultet informatike u Puli
 Programsko inženjerstvo, ak.god. 2021./2022.
